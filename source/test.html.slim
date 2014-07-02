@@ -1,0 +1,22 @@
+---
+title: Welcome to Deepwater
+---
+
+meta content="initial-scale=1.0, user-scalable=no" name="viewport" /
+
+#form-messages
+link href="style.css" rel="stylesheet" /
+script src="app.js" 
+
+form#ajax-contact action="mailer.php" method="post" 
+  .field
+    label for="name"  Name:
+    input#name name="name" required="" type="text" 
+  .field
+    label for="email"  Email:
+    input#email name="email" required="" type="email" 
+  .field
+    label for="message"  Message:
+    textarea#message name="message" required="" 
+  .field
+    button type="submit"  Send
