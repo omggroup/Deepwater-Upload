@@ -21,8 +21,8 @@ meta content="initial-scale=1.0, user-scalable=no" name="viewport" /
           a href="#section-three" Friends
         li
           a href="#section-four"  Contact
-#ocean
 a name = "section-one"
+#ocean
 .container-fluid
   .col-md-12.section-one
     a name = "section-one"
@@ -32,14 +32,23 @@ a name = "section-one"
 a name = "section-two"
 .container-fluid.section-two
   .col-md-6
-  	h2 Summary
+  	h2 align="left" Summary
     p.lead align="left" 
     	|Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer mattis turpis at est imperdiet, at rhoncus augue rutrum. Nunc eu suscipit nibh. Nullam dignissim metus quis ante facilisis, vitae porttitor leo malesuada. Integer bibendum, erat et consectetur sollicitudin, justo metus hendrerit nibh, a dapibus leo neque eget libero. In hac habitasse platea dictumst. Nunc facilisis eu sem a eleifend. Donec vitae nulla nisl. Morbi auctor, massa quis commodo fermentum, nisl dui feugiat felis, at ullamcorper nulla metus sit amet diam. In hac habitasse platea dictumst. Donec non aliquet neque. Suspendisse eget enim at lorem bibendum volutpat consectetur nec elit. Pellentesque sed felis pulvinar sem vulputate hendrerit eu eu eros. Nulla volutpat, nisi pellentesque tincidunt iaculis, nulla mauris pretium lorem, eu lobortis tellus libero id dolor. Ut elementum interdum mauris, eget lobortis mi mattis sit amet. Praesent rutrum nibh tempor, convallis quam ac, gravida lacus. 
-  .col-md-6
+  .col-md-6 align="left"
   	h2 Recent News
-  	p.lead align="left"
-    		|Quisque dictum ligula sodales convallis hendrerit. Cras sed libero vitae nisi aliquet ultricies a vestibulum arcu. Curabitur semper dui eget consectetur convallis. Etiam ut metus scelerisque, feugiat felis ac, adipiscing risus. Vivamus convallis, mi id congue suscipit, diam massa lobortis libero, non viverra ipsum lectus eget arcu. Cras nec scelerisque diam. Nam sit amet ligula convallis, porttitor metus suscipit, tincidunt ante. Nulla facilisi. 
-  	a.btn.btn-primary.pull-right href="#"  View Blog Post
+  	- blog.articles[0...1].each do |article|
+      article.lead
+        h3
+          a href=article.url = article.title
+          br
+        h4
+          time= article.date.strftime('%b %e, %Y')
+        p align="left"
+          = article.summary(500, '>>')
+        a href=article.url  Read more
+
+
 a name = "section-three"
 .container-fluid.section-three
   .col-md-6
@@ -78,25 +87,21 @@ script src="app.js"
 .container-fluid.section-four
   .row
     .col-md-6.col-md-offset-3
-      .well.well-sm
-        form.form-horizontal#ajax-contact action="mail.php" method="POST" 
+        form.form-horizontal action="mail.php" method="POST" 
           fieldset
-            legend.text-center Contact us
+            h4.text-center Contact Us
             /! Name input
             .form-group
-              label.col-md-3.control-label for="name"  Name
-              .col-md-9
+              .col-md-8-offset-2
                 input#name.form-control name="name" placeholder=("Your name") type="text" 
             /! Message body
             .form-group
-              label.col-md-3.control-label for="message"  Your message
-              .col-md-9
-                textarea#form-messages.form-control name="message" placeholder=("Please enter your message here...") rows="5" 
+              .col-md-8-offset-2
+                textarea#message.form-control name="message" placeholder=("Please enter your message here...") rows="5" 
             /! Form actions
             .form-group
-              .col-md-12.text-right
+              .col-md-8-offset-2.text-right
                 button.btn.btn-primary.btn-lg type="submit"  Submit
-
 
 
       
