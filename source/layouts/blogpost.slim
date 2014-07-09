@@ -1,0 +1,20 @@
+= partial "layouts/head.slim"
+
+body class="#{page_classes}"
+.container
+  .col-md-8.col-md-offset-1.left
+    h1
+      a href=current_article.url = current_article.title
+      br
+      time= current_article.date.strftime('%b %e %Y')
+    == yield
+  .col-md-2.sidebar
+     h1 sidebar
+     - blog.articles[0...10].each do |article|
+       article
+         ul.left
+           li
+             a href=article.url = article.title
+              time= article.date.strftime('%b %e %Y')
+
+    

@@ -20,9 +20,9 @@
 # page "/path/to/file.html", :layout => :otherlayout
 #
 # A path which all have the same layout
-# with_layout :admin do
-#   page "/admin/*"
-# end
+with_layout :admin do
+  page "/blog/*", :layout => "blogpost"
+end
 
 # Proxy pages (http://middlemanapp.com/basics/dynamic-pages/)
 # proxy "/this-page-has-no-template.html", "/template-file.html", :locals => {
@@ -52,15 +52,19 @@
 ###
 require 'slim'
 
-set :css_dir, 'stylesheets'
+set :css_dir, 'nick/stylesheets'
 
-set :js_dir, 'javascripts'
+set :js_dir, 'nick/javascripts'
 
-set :images_dir, 'images'
+set :images_dir, 'nick/images'
 
 activate :blog do |blog|
   blog.prefix = "blog"
+  blog.paginate = true
+  blog.per_page = 3
+  blog.page_link = "blogposts"
 end
+
 
 # Build-specific configuration
 configure :build do
